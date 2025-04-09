@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: Arial, Frutiger Aero;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background: #000012;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Frutiger Aero;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background: #000012;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1400px; /* Ensures dashboard won't grow too large */
+    height: 100%;
+    padding: 0 20px; /* Horizontal padding for responsiveness */
+    box-sizing: border-box;
+    margin: 0 auto; /* Centers the dashboard */
+}
+
+.header {
+    position: fixed;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 3px;
+    z-index: 10;
+    max-width: 100%; /* Ensure header doesn't stretch beyond the container */
+    width: auto; /* Let it adjust based on content */
+}
+
+.header-link {
+    background-color: black;
+    padding: 16px 32px;
+    border: 2px solid #DE3163;
+    border-radius: 35px;
+    font-size: 34px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    max-width: 100%; /* Prevent button from getting too wide */
+}
+
+.header-link:hover {
+    background-color: #DE3163;
+    color: white;
+}
+
+.header-link a {
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+}
+
+.header-link a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 160px 20px 0 20px; /* Top padding for header + horizontal padding */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+    text-align: center; /* Ensure text is centered inside */
+}
+
+.main-content img {
+    width: 100%;
+    height: auto;
+    max-width: 900px;
+    display: block;
+    object-fit: contain; /* Ensures the image scales without distortion */
+}
+
+.news-text p {
+    font-size: clamp(1.5rem, 4vw, 2.75rem);
+    text-align: center;
+    max-width: 1000px;
+    margin-top: 0;
+}
+
+.news-text a {
+    font-weight: 900;
+    font-size: 2vw;
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(205deg, #ff0044 0%, #D8BFD8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: background-image 0.3s ease, transform 0.3s ease;
+}
+
+.news-text a:hover {
+    background-image: linear-gradient(45deg, #00FFFF, #C0C0C0);
+    transform: translateY(-3px);
+}
+
+.news-text a:focus {
+    outline: none;
+}
+
+/* Optional: Responsive tweaks for screens smaller than 1440px */
+@media screen and (max-width: 1440px) {
+    .header-link {
+        font-size: 2.5vw;
+        padding: 1vh 2vw;
+    }
+
+    .news-text p {
+        font-size: 2.8vw;
+    }
+
+    .news-text a {
+        font-size: 2.4vw;
+    }
+
+    .main-content img {
+        width: 70vw;
+    }
+}
