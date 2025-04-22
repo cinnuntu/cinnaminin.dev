@@ -1,4 +1,3 @@
-/* General Body */
 body {
     margin: 0;
     font-family: Arial, Frutiger Aero;
@@ -29,11 +28,11 @@ body {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    max-width: 1400px; /* Ensures dashboard won't grow too large */
+    max-width: 1400px;
     height: 100%;
-    padding: 0 20px; /* Horizontal padding for responsiveness */
+    padding: 0 20px;
     box-sizing: border-box;
-    margin: 0 auto; /* Centers the dashboard */
+    margin: 0 auto;
 }
 
 .header {
@@ -44,8 +43,8 @@ body {
     display: flex;
     gap: 3px;
     z-index: 10;
-    max-width: 100%; /* Ensure header doesn't stretch beyond the container */
-    width: auto; /* Let it adjust based on content */
+    max-width: 100%;
+    width: auto;
 }
 
 .header-link {
@@ -58,7 +57,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: 0.2s ease-in-out;
-    max-width: 100%; /* Prevent button from getting too wide */
+    max-width: 100%;
 }
 
 .header-link:hover {
@@ -76,21 +75,18 @@ body {
     text-decoration: underline;
 }
 
-/* Social Container */
 .social-container {
     margin-top: 120px;
     width: 100%;
     text-align: center;
 }
 
-/* Titles */
 h2 {
     font-size: 32px;
     color: white;
     margin-bottom: 40px;
 }
 
-/* Profile Styling */
 .social-profile-link {
     display: block;
     text-decoration: none;
@@ -142,7 +138,6 @@ h2 {
     margin-top: 4px;
 }
 
-/* Profile Stats */
 .stat {
     display: flex;
     align-items: center;
@@ -159,7 +154,6 @@ h2 {
     color: #A7B0BB;
 }
 
-/* Custom Profile Picture Sizes */
 .modrinth-pfp,
 .github-pfp,
 .youtube-pfp {
@@ -169,7 +163,6 @@ h2 {
     object-fit: cover;
 }
 
-/* Custom Profile Names */
 .modrinth-profilename,
 .youtube-profilename,
 .github-profilename {
@@ -180,12 +173,10 @@ h2 {
     padding-top: 0px;
 }
 
-/* Modrinth */
 .modrinth {
     background-color: #16181C;
 }
 
-/* YouTube */
 .youtube {
     background-color: #0F0F0F;
 }
@@ -212,7 +203,7 @@ h2 {
     text-decoration: underline;
     color: #cc0000;
 }
-/* Github */
+
 .github {
     background-color: #0D1117;
 }
@@ -221,7 +212,6 @@ h2 {
    color: #91929D;
 }
 
-/* Website Logo */
 .website-logo {
     position: absolute;
     right: 10px;
@@ -233,7 +223,6 @@ h2 {
     z-index: 5;
 }
 
-/* Profile with Website Logo */
 .social-profile {
     position: relative;
 }

@@ -10,29 +10,20 @@ body {
     background: #000012;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Frutiger Aero;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    background: #000012;
-}
-
 .dashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    max-width: 1400px; /* Ensures dashboard won't grow too large */
+    max-width: 1400px;
     height: 100%;
-    padding: 0 20px; /* Horizontal padding for responsiveness */
+    padding: 0 20px;
     box-sizing: border-box;
-    margin: 0 auto; /* Centers the dashboard */
+    margin: 0 auto;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .header {
@@ -43,8 +34,8 @@ body {
     display: flex;
     gap: 3px;
     z-index: 10;
-    max-width: 100%; /* Ensure header doesn't stretch beyond the container */
-    width: auto; /* Let it adjust based on content */
+    max-width: 100%;
+    width: auto;
 }
 
 .header-link {
@@ -57,7 +48,7 @@ body {
     text-decoration: none;
     cursor: pointer;
     transition: 0.2s ease-in-out;
-    max-width: 100%; /* Prevent button from getting too wide */
+    max-width: 100%;
 }
 
 .header-link:hover {
@@ -78,14 +69,14 @@ body {
 .main-content {
     width: 100%;
     max-width: 1200px;
-    padding: 160px 20px 0 20px; /* Top padding for header + horizontal padding */
+    padding: 160px 20px 0 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin: 0 auto;
-    text-align: center; /* Ensure text is centered inside */
+    text-align: center;
 }
 
 .main-content img {
@@ -93,7 +84,7 @@ body {
     height: auto;
     max-width: 900px;
     display: block;
-    object-fit: contain; /* Ensures the image scales without distortion */
+    object-fit: contain;
 }
 
 .news-text p {
@@ -124,7 +115,6 @@ body {
     outline: none;
 }
 
-/* Optional: Responsive tweaks for screens smaller than 1440px */
 @media screen and (max-width: 1440px) {
     .header-link {
         font-size: 2.5vw;
