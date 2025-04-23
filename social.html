@@ -101,11 +101,9 @@
 </div>
 
 <script>
-  // Function to get current time in your timezone (GMT-5)
   function getCurrentTimeInGMTMinus5() {
     const now = new Date();
 
-    // Convert the time to GMT-5 (adjust based on the user's local timezone offset)
     const offset = -5 * 60; // GMT-5 offset in minutes
     now.setMinutes(now.getMinutes() + now.getTimezoneOffset() + offset);
 
@@ -116,53 +114,53 @@
     return time;
   }
 
-  // Function to calculate the user's time zone difference from GMT-5
   function getUserTimeZoneDifference() {
-    const userTimeZoneOffset = new Date().getTimezoneOffset() / 60; // User's time offset in hours
-    const timeDifference = -5 - userTimeZoneOffset; // Difference between GMT-5 and the user's time zone
+    const userTimeZoneOffset = new Date().getTimezoneOffset() / 60;
+    const timeDifference = -5 - userTimeZoneOffset;
     return timeDifference;
   }
 
-  fetch('https://api.modrinth.com/v2/user/Cinnaminin/projects')
-    .then(response => response.json())
-    .then(projects => {
-      const totalDownloads = projects.reduce((sum, project) => sum + (project.downloads || 0), 0);
-      document.getElementById('modrinth-projects').textContent = `${projects.length} Projects`;
-      document.getElementById('modrinth-downloads').textContent = `${totalDownloads.toLocaleString()} Downloads`;
-    })
-    .catch(() => {
-      // Fallback if the API fails
-      document.getElementById('modrinth-projects').textContent = 'Could Not Load';
-      document.getElementById('modrinth-downloads').textContent = 'Could Not Load';
-    });
-}
+  function fetchModrinthStats() {
+    fetch('https://api.modrinth.com/v2/user/Cinnaminin/projects')
+      .then(response => response.json())
+      .then(projects => {
+        const totalDownloads = projects.reduce((sum, project) => sum + (project.downloads || 0), 0);
+        document.getElementById('modrinth-projects').textContent = `${projects.length} Projects`;
+        document.getElementById('modrinth-downloads').textContent = `${totalDownloads.toLocaleString()} Downloads`;
+      })
+      .catch(() => {
+        // Fallback if the API fails
+        document.getElementById('modrinth-projects').textContent = 'Could Not Load';
+        document.getElementById('modrinth-downloads').textContent = 'Could Not Load';
+      });
+  }
 
-function fetchModrinthJoinDate() {
-  fetch('https://api.modrinth.com/v2/user/Cinnaminin')
-    .then(response => response.json())
-    .then(data => {
-      const joinedDate = new Date(data.created);
-      const now = new Date();
+  function fetchModrinthJoinDate() {
+    fetch('https://api.modrinth.com/v2/user/Cinnaminin')
+      .then(response => response.json())
+      .then(data => {
+        const joinedDate = new Date(data.created);
+        const now = new Date();
 
-      const diffTime = Math.abs(now - joinedDate);
-      const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
-      const diffYears = Math.floor(diffMonths / 12);
-      const remainingMonths = diffMonths % 12;
+        const diffTime = Math.abs(now - joinedDate);
+        const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
+        const diffYears = Math.floor(diffMonths / 12);
+        const remainingMonths = diffMonths % 12;
 
-      let joinedText = 'Joined ';
-      if (diffYears > 0) joinedText += `${diffYears} year${diffYears > 1 ? 's' : ''} `;
-      if (remainingMonths > 0) joinedText += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
-      if (diffYears === 0 && remainingMonths === 0) joinedText += 'just now';
+        let joinedText = 'Joined ';
+        if (diffYears > 0) joinedText += `${diffYears} year${diffYears > 1 ? 's' : ''} `;
+        if (remainingMonths > 0) joinedText += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
+        if (diffYears === 0 && remainingMonths === 0) joinedText += 'just now';
 
-      document.getElementById('modrinth-joined').textContent = joinedText.trim();
-    })
-    .catch(() => {
-      document.getElementById('modrinth-joined').textContent = 'Joined June 2024';
-    });
-}
+        document.getElementById('modrinth-joined').textContent = joinedText.trim();
+      })
+      .catch(() => {
+        // Fallback if the API fails
+        document.getElementById('modrinth-joined').textContent = 'Joined June 2024';
+      });
+  }
 
   window.onload = () => {
-    fetchModrinthData();
     fetchModrinthStats();
     fetchModrinthJoinDate();
 
@@ -177,6 +175,7 @@ function fetchModrinthJoinDate() {
     document.getElementById('timezone').textContent = `${currentTimeInGMTMinus5} (${timeDifferenceText})`;
   };
 </script>
+
 
 </body>
 </html>
