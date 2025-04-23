@@ -52,14 +52,16 @@ body {
 }
 
 .header-link {
-  background-color: black;
-  padding: 16px 32px;
-  border: 2px solid #DE3163;
-  border-radius: 35px;
-  font-size: 2vw;
-  color: white;
-  text-decoration: none;
-  transition: 0.2s ease-in-out;
+    background-color: black;
+    padding: 16px 32px;
+    border: 2px solid #DE3163;
+    border-radius: 35px;
+    font-size: 34px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    max-width: 100%;
 }
 
 .header-link:hover {
