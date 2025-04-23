@@ -123,25 +123,24 @@
     return timeDifference;
   }
 
-  // Fetch Modrinth profile data
-  function fetchModrinthData() {
-    fetch('https://api.modrinth.com/v2/user/Cinnaminin')
-      .then(response => response.json())
-      .then(data => {
-        // Update the profile with live data
-        document.getElementById('modrinth-bio').textContent = data.bio || 'No bio available';
-        document.getElementById('modrinth-projects').textContent = `${data.projects_count} Projects`;
-        document.getElementById('modrinth-downloads').textContent = `${data.downloads_count} Downloads`;
-        document.getElementById('modrinth-joined').textContent = `Joined ${data.created_at.split('T')[0]}`;
-      })
-      .catch(() => {
-        // Fallback data in case of error or failure to load
-        document.getElementById('modrinth-bio').innerHTML = 'Hello! You can call me Cinnamon, I just make minecraft mods and really anything <br> minecraft related (Texture packs, mods, servers)';
-        document.getElementById('modrinth-projects').textContent = '2 Projects';
-        document.getElementById('modrinth-downloads').textContent = '153 Downloads';
-        document.getElementById('modrinth-joined').textContent = 'Joined 10 months ago';
-      });
-  }
+function fetchModrinthData() {
+  fetch('/.netlify/functions/modrinth')
+    .then(response => response.json())
+    .then(data => {
+      // Update the profile with live data
+      document.getElementById('modrinth-bio').textContent = data.bio || 'No bio available';
+      document.getElementById('modrinth-projects').textContent = `${data.projects_count} Projects`;
+      document.getElementById('modrinth-downloads').textContent = `${data.downloads_count} Downloads`;
+      document.getElementById('modrinth-joined').textContent = `Joined ${data.created_at.split('T')[0]}`;
+    })
+    .catch(() => {
+      // Fallback data in case of error or failure to load
+      document.getElementById('modrinth-bio').innerHTML = 'Hello! You can call me Cinnamon, I just make minecraft mods and really anything <br> minecraft related (Texture packs, mods, servers)';
+      document.getElementById('modrinth-projects').textContent = '2 Projects';
+      document.getElementById('modrinth-downloads').textContent = '153 Downloads';
+      document.getElementById('modrinth-joined').textContent = 'Joined 10 months ago';
+    });
+}
 
   window.onload = () => {
     fetchModrinthData();
