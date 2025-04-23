@@ -104,7 +104,7 @@
   function getCurrentTimeInGMTMinus5() {
     const now = new Date();
 
-    const offset = -5 * 60; // GMT-5 offset in minutes
+    const offset = -4 * 60;
     now.setMinutes(now.getMinutes() + now.getTimezoneOffset() + offset);
 
     const hours = now.getHours().toString().padStart(2, '0');
@@ -115,10 +115,18 @@
   }
 
   function getUserTimeZoneDifference() {
-    const userTimeZoneOffset = new Date().getTimezoneOffset() / 60;
-    const timeDifference = -5 - userTimeZoneOffset;
-    return timeDifference;
+   const userOffset = -new Date().getTimezoneOffset() / 60; // Convert to UTC offset
+   const referenceOffset = -4; // GMT-5
+    const difference = userOffset - referenceOffset;
+
+  if (difference === 0) {
+    return "Same Time";
+  } else if (difference > 0) {
+    return `+${difference}hr`;
+  } else {
+    return `${difference}hr`;
   }
+}
 
   function fetchModrinthStats() {
     fetch('https://api.modrinth.com/v2/user/Cinnaminin/projects')
@@ -168,8 +176,8 @@
     const currentTimeInGMTMinus5 = getCurrentTimeInGMTMinus5();
 
     const timeDifferenceText = userTimeZoneDifference < 0
-      ? `+${Math.abs(userTimeZoneDifference)}hr`
-      : `${userTimeZoneDifference}hr`;
+      ? `+${Math.abs(userTimeZoneDifference)}`
+      : `${userTimeZoneDifference}`;
 
     // Set the text content for the timezone display
     document.getElementById('timezone').textContent = `${currentTimeInGMTMinus5} (${timeDifferenceText})`;
