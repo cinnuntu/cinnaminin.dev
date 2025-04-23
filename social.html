@@ -25,7 +25,7 @@
           <img src="assets/modrinth_pfp.png" alt="Modrinth Profile Picture" class="modrinth-pfp">
           <div class="profile-info">
             <h3 class="modrinth-profilename">Cinnaminin</h3>
-            <p class="profile-bio" id="modrinth-bio">Loading bio...</p>
+            <p class="profile-bio" id="modrinth-bio">Hello! You can call me Cinnamon, i just make minecraft mods and really anything<br> minecraft related (Texture packs, mods, servers)</p>
             <div class="profile-stats">
               <div class="stat">
                 <img src="assets/modrimth/default_icon.png" alt="Projects Icon" class="stat-icon">
@@ -37,7 +37,7 @@
               </div>
               <div class="stat">
                 <img src="assets/modrimth/calender.png" alt="Joined Icon" class="stat-icon">
-                <span id="modrinth-joined">Loading join date</span>
+                <span id="modrinth-joined">Loading join date...</span>
               </div>
             </div>
           </div>
@@ -123,16 +123,6 @@
     return timeDifference;
   }
 
-function fetchModrinthData() {
-  // First fetch user info
-  fetch('/.netlify/functions/modrinth') // This is your Netlify function
-    .then(response => response.json())
-    .then(user => {
-      document.getElementById('modrinth-bio').textContent = user.bio || 'No bio available';
-      document.getElementById('modrinth-joined').textContent = `Joined ${user.created.split('T')[0]}`;
-    });
-
-  // Then fetch projects separately
   fetch('https://api.modrinth.com/v2/user/Cinnaminin/projects')
     .then(response => response.json())
     .then(projects => {
@@ -142,8 +132,32 @@ function fetchModrinthData() {
     })
     .catch(() => {
       // Fallback if the API fails
-      document.getElementById('modrinth-projects').textContent = '2 Projects';
-      document.getElementById('modrinth-downloads').textContent = '153 Downloads';
+      document.getElementById('modrinth-projects').textContent = 'Could Not Load';
+      document.getElementById('modrinth-downloads').textContent = 'Could Not Load';
+    });
+}
+
+function fetchModrinthJoinDate() {
+  fetch('https://api.modrinth.com/v2/user/Cinnaminin')
+    .then(response => response.json())
+    .then(data => {
+      const joinedDate = new Date(data.created);
+      const now = new Date();
+
+      const diffTime = Math.abs(now - joinedDate);
+      const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
+      const diffYears = Math.floor(diffMonths / 12);
+      const remainingMonths = diffMonths % 12;
+
+      let joinedText = 'Joined ';
+      if (diffYears > 0) joinedText += `${diffYears} year${diffYears > 1 ? 's' : ''} `;
+      if (remainingMonths > 0) joinedText += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
+      if (diffYears === 0 && remainingMonths === 0) joinedText += 'just now';
+
+      document.getElementById('modrinth-joined').textContent = joinedText.trim();
+    })
+    .catch(() => {
+      document.getElementById('modrinth-joined').textContent = 'Joined June 2024';
     });
 }
 
