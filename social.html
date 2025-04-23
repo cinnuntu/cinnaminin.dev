@@ -124,7 +124,7 @@
   }
 
 function fetchModrinthData() {
-  fetch('/.netlify/functions/modrinth')
+  fetch('/netlify/functions/modrinth')
     .then(response => response.json())
     .then(data => {
       // Update the profile with live data
