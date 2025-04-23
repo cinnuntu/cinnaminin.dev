@@ -163,6 +163,8 @@ function fetchModrinthJoinDate() {
 
   window.onload = () => {
     fetchModrinthData();
+    fetchModrinthStats();
+    fetchModrinthJoinDate();
 
     const userTimeZoneDifference = getUserTimeZoneDifference();
     const currentTimeInGMTMinus5 = getCurrentTimeInGMTMinus5();
