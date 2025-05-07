@@ -115,8 +115,8 @@
   }
 
   function getUserTimeZoneDifference() {
-   const userOffset = -new Date().getTimezoneOffset() / 60; // Convert to UTC offset
-   const referenceOffset = -4; // GMT-5
+   const userOffset = -new Date().getTimezoneOffset() / 60;
+   const referenceOffset = -4;
     const difference = userOffset - referenceOffset;
 
   if (difference === 0) {

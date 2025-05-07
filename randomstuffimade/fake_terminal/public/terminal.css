@@ -1,0 +1,37 @@
+body {
+  background: black;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 20px;
+}
+
+#terminal {
+  max-width: 800px;
+  margin: auto;
+}
+
+#output {
+  white-space: pre-wrap;
+}
+
+input {
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  font-family: monospace;
+  font-size: 1em;
+  outline: none;
+  width: 90%;
+}
+
+:root {
+  --terminal-color: #F12FF1;
+}
+
+body {
+  color: var(--terminal-color);
+}
+
+input {
+  color: var(--terminal-color);
+}
