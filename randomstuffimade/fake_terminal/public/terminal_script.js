@@ -36,6 +36,8 @@ input.addEventListener('keydown', async (e) => {
       appendOutput(`Available commands:
       - info: Show current site location and browser info
       - whoami: Show username
+      - cls: clears the console
+      - clear: clears the console
       - uptime: Show current terminal uptime
       - netstat: linux netstat command
       - terminalcolor <name>: Change terminal color
@@ -84,6 +86,8 @@ udp               8420`);
     } else if (cmd === 'uptime') {
       const uptime = Math.floor(performance.now() / 1000);
       appendOutput(`Current Terminal Uptime: ${uptime} seconds`);
+      } else if (cmd === 'cls' || cmd === 'clear') {
+        output.textContent = 'cinnaminin.dev Terminal (1.0.5)';
     } else if (cmd === 'terminalcolor') {
             appendOutput(`invalid ussage: please provide a valid css color. (EX: pink/#FFC0CB)`);
     } else if (cmd.startsWith('terminalcolor ')) {
