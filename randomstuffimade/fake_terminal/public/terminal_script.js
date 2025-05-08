@@ -87,7 +87,7 @@ udp               8420`);
       const uptime = Math.floor(performance.now() / 1000);
       appendOutput(`Current Terminal Uptime: ${uptime} seconds`);
       } else if (cmd === 'cls' || cmd === 'clear') {
-        output.textContent = 'cinnaminin.dev Terminal (1.0.5)';
+        output.textContent = 'cinnaminin.dev Terminal (1.0.6)';
     } else if (cmd === 'terminalcolor') {
             appendOutput(`invalid ussage: please provide a valid css color. (EX: pink/#FFC0CB)`);
     } else if (cmd.startsWith('terminalcolor ')) {
