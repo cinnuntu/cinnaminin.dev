@@ -39,7 +39,7 @@ input.addEventListener('keydown', async (e) => {
       - uptime: Show current terminal uptime
       - netstat: linux netstat command
       - terminalcolor <name>: Change terminal color
-      - sudo <cmd>: Run privileged commands
+      - sudo <cmd>: Run privileged commands (password)
       - goto <url>: Navigate to any URL on the internet
       - filetree: Show site file structure
       - openfile <filename>: Open a known site file
