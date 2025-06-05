@@ -125,10 +125,26 @@ h2 {
     flex-grow: 1;
 }
 
-.profile-bio {
-    font-size: 16px;
-    color: #ccc;
-    margin: 4px 0;
+.profile-bio,
+.profile-more-info {
+  background: none !important;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1.1;
+}
+
+.profile-more-info {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.profile-info {
+  min-height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .profile-stats {
@@ -233,4 +249,49 @@ h2 {
     top: 10px;
     width: 40px;
     height: auto;
+}
+
+.steam {
+  position: relative;
+  color: white;
+  background-color: #1b2838;
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+}
+
+.steam-pfp {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+
+
+.steam-avatar-frame {
+  position: relative;
+  width: 85px;
+  height: 85px;
+}
+
+.steam-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 85px;
+  height: 85px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.steam-profilename {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  padding-top: 0;
+}
+
+.steam .profile-bio {
+  color: #e4e4e4;
 }

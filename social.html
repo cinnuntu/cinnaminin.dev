@@ -18,6 +18,38 @@
   <div class="social-container">
     <h2>Find Me On:</h2>
 
+    <!-- Steam Profile -->
+    <a href="https://steamcommunity.com/profiles/76561199106604159" class="social-profile-link">
+      <div class="social-profile steam" style="background-image: url('assets/steam/winter24background.gif'); background-size: cover; background-position: center;">
+        <div class="profile-header">
+          <div class="steam-avatar-frame">
+            <img src="assets/steam/lilith_cake_steam_pfp.gif" alt="Steam Profile Picture" class="steam-pfp">
+            <img src="assets/steam/winter24_frame.gif" class="steam-frame" alt="Avatar Frame">
+          </div>
+          <div class="profile-info">
+            <h3 class="steam-profilename">Cinnaminin</h3>
+            <p class="profile-bio">Crasher Of Castles <br>I CANNOT WAIT FOR THE PAINTERS PARADISE DLC!!</p>
+            <p class="profile-more-info">View more info</p>
+            <div class="profile-stats">
+              <div class="stat">
+                <img src="assets/steam/steam_icon.png" alt="Steam Icon" class="stat-icon">
+                <span id="steam-level">Level: 15</span>
+              </div>
+              <div class="stat">
+                <img src="assets/steam/gameicon.png" alt="Games Icon" class="stat-icon">
+                <span id="steam-games">Games: 39</span>
+              </div>
+              <div class="stat">
+                <img src="assets/steam/statusicon.png" alt="Status Icon" class="stat-icon">
+                <span id="steam-status">Loading status...</span>
+              </div>
+            </div>
+          </div>
+          <img src="assets/steam/steam_icon.png" alt="Steam Logo" class="website-logo">
+        </div>
+      </div>
+    </a>
+
     <!-- Modrinth Profile -->
     <a href="https://modrinth.com/user/Cinnaminin" class="social-profile-link">
       <div class="social-profile modrinth">
@@ -101,32 +133,65 @@
 </div>
 
 <script>
+  const steamID64 = '76561199106604159';
+  const proxyBaseURL = 'https://steam-proxy-for-cinnaminin-dev.onrender.com';
+
+  function fetchSteamData() {
+    // Fetch profile summary (status, avatar, name, etc.)
+    fetch(`${proxyBaseURL}/steam/summary/${steamID64}`)
+      .then(res => res.json())
+      .then(data => {
+        const player = data.response.players[0];
+        const statusMap = ['Offline', 'Online', 'Busy', 'Away', 'Snooze', 'Looking to Trade', 'Looking to Play'];
+        const status = statusMap[player.personastate] || 'Unknown';
+
+        document.getElementById('steam-status').textContent = `Status: ${status}`;
+        document.getElementById('steam-avatar').src = player.avatarfull;
+        document.getElementById('steam-profile-link').href = player.profileurl;
+        document.querySelector('.steam-profilename').textContent = player.personaname;
+      })
+      .catch(() => {
+        document.getElementById('steam-status').textContent = `Status: Unknown`;
+      });
+
+    // Fetch Steam level
+    fetch(`${proxyBaseURL}/steam/level/${steamID64}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('steam-level').textContent = `Level ${data.response.player_level}`;
+      });
+
+    // Fetch game count
+    fetch(`${proxyBaseURL}/steam/games/${steamID64}`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('steam-games').textContent = `${data.response.game_count} Games`;
+      });
+  }
+
+  window.onload = () => {
+    fetchSteamData();
+  }
+
   function getCurrentTimeInGMTMinus5() {
     const now = new Date();
-
     const offset = -4 * 60;
     now.setMinutes(now.getMinutes() + now.getTimezoneOffset() + offset);
 
     const hours = now.getHours().toString().padStart(2, '0');
     const minutes = now.getMinutes().toString().padStart(2, '0');
-    const time = `${hours}:${minutes}`;
-
-    return time;
+    return `${hours}:${minutes}`;
   }
 
   function getUserTimeZoneDifference() {
-   const userOffset = -new Date().getTimezoneOffset() / 60;
-   const referenceOffset = -4;
+    const userOffset = -new Date().getTimezoneOffset() / 60;
+    const referenceOffset = -4;
     const difference = userOffset - referenceOffset;
 
-  if (difference === 0) {
-    return "Same Time";
-  } else if (difference > 0) {
-    return `+${difference}hr`;
-  } else {
+    if (difference === 0) return "Same Time";
+    if (difference > 0) return `+${difference}hr`;
     return `${difference}hr`;
   }
-}
 
   function fetchModrinthStats() {
     fetch('https://api.modrinth.com/v2/user/Cinnaminin/projects')
@@ -137,7 +202,6 @@
         document.getElementById('modrinth-downloads').textContent = `${totalDownloads.toLocaleString()} Downloads`;
       })
       .catch(() => {
-        // Fallback if the API fails
         document.getElementById('modrinth-projects').textContent = 'Could Not Load';
         document.getElementById('modrinth-downloads').textContent = 'Could Not Load';
       });
@@ -149,7 +213,6 @@
       .then(data => {
         const joinedDate = new Date(data.created);
         const now = new Date();
-
         const diffTime = Math.abs(now - joinedDate);
         const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
         const diffYears = Math.floor(diffMonths / 12);
@@ -163,7 +226,6 @@
         document.getElementById('modrinth-joined').textContent = joinedText.trim();
       })
       .catch(() => {
-        // Fallback if the API fails
         document.getElementById('modrinth-joined').textContent = 'Joined June 2024';
       });
   }
@@ -171,19 +233,13 @@
   window.onload = () => {
     fetchModrinthStats();
     fetchModrinthJoinDate();
+    fetchSteamData();
 
-    const userTimeZoneDifference = getUserTimeZoneDifference();
-    const currentTimeInGMTMinus5 = getCurrentTimeInGMTMinus5();
-
-    const timeDifferenceText = userTimeZoneDifference < 0
-      ? `+${Math.abs(userTimeZoneDifference)}`
-      : `${userTimeZoneDifference}`;
-
-    // Set the text content for the timezone display
-    document.getElementById('timezone').textContent = `${currentTimeInGMTMinus5} (${timeDifferenceText})`;
+    const time = getCurrentTimeInGMTMinus5();
+    const diff = getUserTimeZoneDifference();
+    document.getElementById('timezone').textContent = `${time} (${diff})`;
   };
 </script>
-
 
 </body>
 </html>
