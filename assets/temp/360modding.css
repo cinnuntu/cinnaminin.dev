@@ -1,0 +1,82 @@
+    :root {
+  --main-color: #FF004F;
+  --bg-color: #1E1E1E;
+  --text-color: #FFFFFF;
+  --hover-bg: #2a2a2a;
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --hover-bg: #eeeeee;
+}
+
+body {
+  margin: 0;
+  font-family: 'PT Sans Narrow', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+   font-size: 2.5rem;
+   decoration: none;
+   margin-bottom: 45px;
+}
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background-color: var(--hover-bg);
+      border: none;
+      border-radius: 50%;
+      padding: 0.6rem;
+      color: var(--text-color);
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .download-btn {
+      padding: 0.50rem .70rem;
+      background-color: var(--main-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: background-color 0.25s ease;
+      width: fit-content;
+      margin-top: 2.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background-color: #ff3370;
+    }
+
+    .download-row span a {
+      color: var(--main-color);
+      font-size: 1.2rem;
+    }
+
+    .download-row span a:hover {
+      color: #ff3370;
+    }
+
+    download-txt {
+      font-size: 1.2rem;
+    }
+
+    title {
+      font-size: 2rem;
+    }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>360 Modding - Download Utils</title>
+    <link rel="stylesheet" href="360modding.css">
+</head>
+<body>
+<a class="title">360 Modding Util Page</a>
+<a class=h1 href="/index.html"><br>Go Home</a>
+
+
+<div class="content-section download-buttons">
+    <div class="download-row">
+        <a href="https://drive.google.com/uc?export=download&id=1w0y7Fqv4KeE0W5tKZ2cRe_7veGFfW20S" class="download-btn">Download</a>
+        <span><a href="https://drive.google.com/uc?export=download&id=1w0y7Fqv4KeE0W5tKZ2cRe_7veGFfW20S" class="download-txt">360moddingUSB.zip</a></span>
+    </div>
+</div>
+<h2><br><br>All files on this page were uploaded by Cinnaminin</h2>
+</body>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.content-section').forEach(el => {
+    observer.observe(el);
+  });
+  function toggleMenu() {
+  const nav = document.getElementById('navMenu');
+  nav.classList.toggle('open');
+}
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute('data-theme') || 'dark';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+});
+</script>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+</html>
