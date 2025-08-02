@@ -1,84 +1,63 @@
-@font-face {
+.plugin-hero {
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 40px;
+}
+
+.plugin-icon {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 20px;
+}
+
+.plugin-title {
+    font-size: 2.5rem;
+    margin: 10px 0;
     font-family: 'Minecraftia';
-    src: url('/assets/fonts/Minecraftia.ttf') format('truetype');
+    color: #DE3163;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Frutiger Aero;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    background: #000012;
+.plugin-tagline {
+    font-size: 1.2rem;
+    color: #bbb;
 }
 
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 1400px;
-    height: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-    margin: 0 auto;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+.plugin-info {
+    background-color: #1d1f27;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
-.header {
-    position: fixed;
-    top: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    z-index: 10;
-    max-width: 100%;
-    width: auto;
+.plugin-info h2 {
+    border-bottom: 2px solid #DE3163;
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.header-link {
-    background-color: black;
-    padding: 16px 32px;
-    border: 2px solid #DE3163;
-    border-radius: 35px;
-    font-size: 34px;
+.plugin-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.plugin-info li {
+    margin: 8px 0;
+}
+
+.download-btn {
+    display: inline-block;
+    background: #DE3163;
     color: white;
     text-decoration: none;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    max-width: 100%;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    transition: 0.2s;
 }
 
-.header-link:hover {
-    background-color: #DE3163;
-    color: white;
-}
-
-.header-link a {
-    text-decoration: none;
-    color: white;
-    margin: 0 20px;
-}
-
-.header-link a:hover {
-    text-decoration: underline;
-}
-
-.pl-info {
-    font-family: 'Minecraftia';
-    font-size: 1.099rem;
-}
-
-@media screen and (max-width: 1440px) {
-    .header-link {
-        font-size: 2.5vw;
-        padding: 1vh 2vw;
-    }
+.download-btn:hover {
+    background: #ff4d7e;
 }
