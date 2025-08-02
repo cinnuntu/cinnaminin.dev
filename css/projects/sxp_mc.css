@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Minecraftia';
-    src: url('/assets/fonts/Minecraftia.ttf') format('truetype');
+    src: url('../../assets/fonts/Minecraftia.ttf') format('truetype');
 }
 
 body {
@@ -133,7 +133,8 @@ body {
 }
 
 code {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    font-family: 'Minecraftia';
 }
 
 .download-btn:hover {
