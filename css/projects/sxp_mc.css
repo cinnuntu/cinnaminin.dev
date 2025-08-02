@@ -74,35 +74,40 @@ body {
 }
 
 .plugin-icon {
-    width: 128px;
-    height: 128px;
+    width: 156px;
+    height: 156px;
 }
 
 .plugin-title {
-    font-size: 2.5rem;
-    margin: 10px 0;
+    font-size: 3.5rem;
+    margin: 10px 0 2px 0;
     font-family: 'Minecraftia';
     color: #DE3163;
 }
 
-.plugin-tagline {
+.plugin-bio {
     font-size: 1.2rem;
+    margin: -4px 0px;
     color: #bbb;
+    font-family: 'Minecraftia';
+    margin: 0 0 12px 0;
 }
 
 .plugin-info {
     background-color: #1d1f27;
     border-radius: 12px;
-    padding: 20px;
+    padding: 45px;
     max-width: 900px;
     margin: auto;
+    font-family: 'Minecraftia';
 }
 
 .plugin-info h2 {
     border-bottom: 2px solid #DE3163;
     padding-bottom: 6px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
+    font-family: 'Minecraftia';
 }
 
 .plugin-info ul {
@@ -123,7 +128,12 @@ body {
     border-radius: 8px;
     margin-top: 10px;
     font-size: 1.1rem;
+    font-family: 'Minecraftia';
     transition: 0.2s;
+}
+
+code {
+    font-size: 0.9rem;
 }
 
 .download-btn:hover {
