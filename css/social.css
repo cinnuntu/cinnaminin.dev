@@ -10,18 +10,6 @@ body {
     background: #000012;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Frutiger Aero;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    background: #000012;
-}
-
 .dashboard {
     display: flex;
     flex-direction: column;

@@ -1,13 +1,81 @@
+@font-face {
+    font-family: 'Minecraftia';
+    src: url('/assets/fonts/Minecraftia.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Frutiger Aero;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background: #000012;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.header {
+    position: fixed;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+    max-width: 100%;
+    width: auto;
+}
+
+.header-link {
+    background-color: black;
+    padding: 16px 32px;
+    border: 2px solid #DE3163;
+    border-radius: 35px;
+    font-size: 34px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    max-width: 100%;
+}
+
+.header-link:hover {
+    background-color: #DE3163;
+    color: white;
+}
+
+.header-link a {
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+}
+
+.header-link a:hover {
+    text-decoration: underline;
+}
+
 .plugin-hero {
     text-align: center;
     margin-top: 150px;
-    margin-bottom: 40px;
 }
 
 .plugin-icon {
     width: 128px;
     height: 128px;
-    margin-bottom: 20px;
 }
 
 .plugin-title {
