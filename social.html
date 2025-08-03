@@ -8,17 +8,19 @@
 </head>
 <body>
 <div class="dashboard">
+  <div class="mobile-menu-icon" id="mobile-menu-icon" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
+    &#9776;
+  </div>
   <div class="header">
-    <a href="index.html" class="header-link">Home</a>
-    <a href="projects.html" class="header-link">Projects</a>
-    <a href="social.html" class="header-link">Social</a>
-    <a href="credits.html" class="header-link">Credits</a>
+    <a href="/index.html" class="header-btn">Home</a>
+    <a href="/projects.html" class="header-btn">Projects</a>
+    <a href="/social.html" class="header-btn">Social</a>
+    <a href="/credits.html" class="header-btn">Credits</a>
   </div>
 
   <div class="social-container">
     <h2>Find Me On:</h2>
 
-    <!-- Steam Profile -->
     <a href="https://steamcommunity.com/profiles/76561199106604159" class="social-profile-link">
       <div class="social-profile steam" style="background-image: url('assets/steam/winter24background.gif'); background-size: cover; background-position: center;">
         <div class="profile-header">
@@ -37,7 +39,7 @@
               </div>
               <div class="stat">
                 <img src="assets/steam/gameicon.png" alt="Games Icon" class="stat-icon">
-                <span id="steam-games">Games: 39</span>
+                <span id="steam-games">Games: 41</span>
               </div>
               <div class="stat">
                 <img src="assets/steam/statusicon.png" alt="Status Icon" class="stat-icon">
@@ -50,7 +52,6 @@
       </div>
     </a>
 
-    <!-- Modrinth Profile -->
     <a href="https://modrinth.com/user/Cinnaminin" class="social-profile-link">
       <div class="social-profile modrinth">
         <div class="profile-header">
@@ -78,14 +79,13 @@
       </div>
     </a>
 
-    <!-- YouTube Profile -->
     <a href="https://youtube.com/@cinnamininn" class="social-profile-link">
       <div class="social-profile youtube">
         <div class="profile-header">
           <img src="assets/yt/youtube_pfp.jpg" alt="YouTube Profile Picture" class="youtube-pfp">
           <div class="profile-info">
             <h3 class="youtube-profilename">Cinnaminin</h3>
-            <p class="profile-bio">@cinnamininn • 41 Subscribers • 7 Videos</p>
+            <p class="profile-bio">@cinnamininn</p>
             <div class="profile-stats">
               <div class="stat">
                 <span>What do I put here? Oh things about me. Umm... I play games and make videos. And play...</span>
@@ -207,28 +207,34 @@
       });
   }
 
-  function fetchModrinthJoinDate() {
-    fetch('https://api.modrinth.com/v2/user/Cinnaminin')
-      .then(response => response.json())
-      .then(data => {
-        const joinedDate = new Date(data.created);
-        const now = new Date();
-        const diffTime = Math.abs(now - joinedDate);
-        const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
-        const diffYears = Math.floor(diffMonths / 12);
-        const remainingMonths = diffMonths % 12;
+function fetchModrinthJoinDate() {
+  fetch('https://api.modrinth.com/v2/user/Cinnaminin')
+    .then(response => response.json())
+    .then(data => {
+      const joinedDate = new Date(data.created);
+      const now = new Date();
+      const diffTime = Math.abs(now - joinedDate);
+      const diffMonths = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30));
+      const diffYears = Math.floor(diffMonths / 12);
+      const remainingMonths = diffMonths % 12;
 
-        let joinedText = 'Joined ';
-        if (diffYears > 0) joinedText += `${diffYears} year${diffYears > 1 ? 's' : ''} `;
-        if (remainingMonths > 0) joinedText += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
-        if (diffYears === 0 && remainingMonths === 0) joinedText += 'just now';
+      let joinedText = 'Joined ';
+      if (diffYears > 0) joinedText += `${diffYears} year${diffYears > 1 ? 's' : ''}`;
+      if (diffYears > 0 && remainingMonths > 0) joinedText += ' and ';
+      if (remainingMonths > 0) joinedText += `${remainingMonths} month${remainingMonths > 1 ? 's' : ''}`;
 
-        document.getElementById('modrinth-joined').textContent = joinedText.trim();
-      })
-      .catch(() => {
-        document.getElementById('modrinth-joined').textContent = 'Joined June 2024';
-      });
-  }
+      if (diffYears === 0 && remainingMonths === 0) {
+        joinedText += 'just now';
+      } else {
+        joinedText += ' ago';
+      }
+
+      document.getElementById('modrinth-joined').textContent = joinedText.trim();
+    })
+    .catch(() => {
+      document.getElementById('modrinth-joined').textContent = 'Joined June 2024';
+    });
+}
 
   window.onload = () => {
     fetchModrinthStats();
@@ -240,6 +246,23 @@
     document.getElementById('timezone').textContent = `${time} (${diff})`;
   };
 </script>
+<script>
+  const menuIcon = document.querySelector('.mobile-menu-icon');
+  const header = document.querySelector('.header');
 
+  function toggleMenu() {
+    header.classList.toggle('active');
+    const expanded = menuIcon.getAttribute('aria-expanded') === 'true';
+    menuIcon.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  }
+
+  menuIcon.addEventListener('click', toggleMenu);
+  menuIcon.addEventListener('keypress', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+</script>
 </body>
 </html>

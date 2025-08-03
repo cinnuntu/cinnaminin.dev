@@ -11,7 +11,9 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    overflow: hidden;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     background: #000012;
 }
 
@@ -29,75 +31,112 @@ body {
 }
 
 .header {
-    position: fixed;
-    top: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    z-index: 10;
-    max-width: 100%;
-    width: auto;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 20;
+  max-width: 100%;
+  width: auto;
+  background: rgba(0, 0, 18, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  padding: 15px 30px;
+  border-radius: 12px;
 }
 
-.header-link {
-    background-color: black;
-    padding: 16px 32px;
-    border: 2px solid #DE3163;
-    border-radius: 35px;
-    font-size: 34px;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    max-width: 100%;
+.header-btn {
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.6em 1.6em;
+  border: 3px solid #FF004F;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #FFF;
+  background-color: #000012;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
 }
 
-.header-link:hover {
-    background-color: #DE3163;
-    color: white;
+.header-btn:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #FF004F;
+  z-index: -1;
 }
 
-.header-link a {
-    text-decoration: none;
-    color: white;
-    margin: 0 20px;
+.header-btn:hover, .header-btn:focus {
+  color: white;
 }
 
-.header-link a:hover {
-    text-decoration: underline;
+.header-btn:hover:before, .header-btn:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.header-btn:active {
+  transform: scale(0.9);
+}
+
+
+.content-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .plugin-hero {
-    text-align: center;
-    margin-top: 150px;
+  text-align: center;
+  margin-top: 150px;
+  position: relative;
+  z-index: 1;
 }
 
 .plugin-icon {
     width: 156px;
     height: 156px;
+    transition: opacity 0.6s ease;
 }
 
 .plugin-title {
-    font-size: 3.5rem;
-    margin: 10px 0 2px 0;
+    font-size: 3.2rem;
+    margin-bottom: 2px;
+    line-height: 1.1;
     font-family: 'Minecraftia';
-    color: #DE3163;
+    color: #FF009F;
 }
 
 .plugin-bio {
     font-size: 1.2rem;
-    margin: -4px 0px;
+    line-height: 1.1;
+    margin-top: 0px;
     color: #bbb;
     font-family: 'Minecraftia';
-    margin: 0 0 12px 0;
 }
 
 .plugin-info {
     background-color: #1d1f27;
     border-radius: 12px;
     padding: 45px;
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     font-family: 'Minecraftia';
 }
@@ -120,23 +159,131 @@ body {
 }
 
 .download-btn {
-    display: inline-block;
-    background: #DE3163;
-    color: white;
-    text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    margin-top: 10px;
-    font-size: 1.1rem;
-    font-family: 'Minecraftia';
-    transition: 0.2s;
-}
-
-code {
-    font-size: 1.2rem;
-    font-family: 'Minecraftia';
+  padding: 6px 12px;
+  background-color: #FF004F;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.25s ease;
+  width: 170px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .download-btn:hover {
-    background: #ff4d7e;
+  background-color: #FF4F86;
 }
+
+.downloadlink {
+  font-size: 12px;
+  color: #FFAAFF;
+  position: absolute;
+  bottom: -6px;
+  right: -150px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+code {
+    font-size: 1rem;
+    font-family: 'Minecraftia';
+    color: #55FFFF;
+}
+
+.argument {
+    font-size: 1rem;
+    font-family: 'Minecraftia';
+    color: #FFFF55;
+}
+
+.tooltip-link {
+  position: relative;
+  color: #FF004F;
+  font-family: 'Minecraftia', monospace;
+}
+
+.tooltip-link:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.tooltip-text {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(40, 40, 40, 0.92);
+  color: #FFFFA0;
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  font-family: 'Minecraftia', monospace;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease;
+  white-space: nowrap;
+  z-index: 999;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.scrolled .plugin-icon {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.plugin-icon-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile Support OMG */
+.mobile-menu-icon {
+  display: none;
+  font-size: 40px;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  color: #FF004F;
+  z-index: 20;
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .header.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: -170px;
+    width: 40%;
+    background: #000012cc;
+    padding: 400px 130px;
+    gap: 10px;
+    z-index: 15;
+  }
+
+  .header.active .header-btn {
+    font-size: 18px;
+    padding: 0.8em 1.6em;
+    border-radius: 8px;
+    text-align: left;
+    left: -125px;
+    bottom: 155px;
+  }
+}
+

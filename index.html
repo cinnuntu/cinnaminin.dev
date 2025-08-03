@@ -8,11 +8,14 @@
 </head>
 <body>
 <div class="dashboard">
+    <div class="mobile-menu-icon" id="mobile-menu-icon" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
+        &#9776;
+    </div>
     <div class="header">
-        <a href="/index.html" class="header-link">Home</a>
-        <a href="/projects.html" class="header-link">Projects</a>
-        <a href="/social.html" class="header-link">Social</a>
-        <a href="/credits.html" class="header-link">Credits</a>
+        <a href="/index.html" class="header-btn">Home</a>
+        <a href="/projects.html" class="header-btn">Projects</a>
+        <a href="/social.html" class="header-btn">Social</a>
+        <a href="/credits.html" class="header-btn">Credits</a>
     </div>
 
     <div class="main-content">
@@ -23,6 +26,25 @@
         </div>
     </div>
 </div>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "70f5f6b0eb6b463a9bc77f43a5ddb4ae"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "70f5f6b0eb6b463a9bc77f43a5ddb4ae"}'></script>
+<script>
+    const menuIcon = document.querySelector('.mobile-menu-icon');
+    const header = document.querySelector('.header');
+
+    function toggleMenu() {
+      header.classList.toggle('active');
+      const expanded = menuIcon.getAttribute('aria-expanded') === 'true';
+      menuIcon.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    }
+
+    menuIcon.addEventListener('click', toggleMenu);
+    menuIcon.addEventListener('keypress', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+</script>
 </body>
 </html>

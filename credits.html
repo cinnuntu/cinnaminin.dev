@@ -8,21 +8,39 @@
 </head>
 <body>
 <div class="dashboard">
+    <div class="mobile-menu-icon" id="mobile-menu-icon" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
+        &#9776;
+    </div>
     <div class="header">
-        <a href="/index.html" class="header-link">Home</a>
-        <a href="/projects.html" class="header-link">Projects</a>
-        <a href="/social.html" class="header-link">Social</a>
-        <a href="/credits.html" class="header-link">Credits</a>
+        <a href="/index.html" class="header-btn">Home</a>
+        <a href="/projects.html" class="header-btn">Projects</a>
+        <a href="/social.html" class="header-btn">Social</a>
+        <a href="/credits.html" class="header-btn">Credits</a>
     </div>
 
     <div class="main-content">
         <div class="creds-ig">
-            <p>Me. <br> I was the only one that worked on this website. <br>But thats still cool i guess?<br> <br>If you are still here, i guess you want to know more?<br>
-                I just started my coding Journey around Novemember of 2024.<br>I like tech <br> I like Linux<br> I like Modding Minecraft<br>
-                I have no idea why im even making this, i got bored one day and decided to, but i like to code so who cares?<br>If you for some reason are still here, go to my <a href="/social.html">socials</a> to find more ig.<br>
-                Have a great day!!</p>
+            <p>Me. <br> I was the only one that worked on this website. <br>But thats still cool i guess?<br><br> Go check out my <a href="/social.html">socials</a> instead :3</p>
         </div>
     </div>
 </div>
+<script>
+    const menuIcon = document.querySelector('.mobile-menu-icon');
+    const header = document.querySelector('.header');
+
+    function toggleMenu() {
+      header.classList.toggle('active');
+      const expanded = menuIcon.getAttribute('aria-expanded') === 'true';
+      menuIcon.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    }
+
+    menuIcon.addEventListener('click', toggleMenu);
+    menuIcon.addEventListener('keypress', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+</script>
 </body>
 </html>

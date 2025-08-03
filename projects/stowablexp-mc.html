@@ -8,46 +8,78 @@
 </head>
 <body>
 <div class="dashboard">
-    <!-- Header -->
+    <div class="mobile-menu-icon" id="mobile-menu-icon" aria-label="Toggle menu" role="button" tabindex="0" aria-expanded="false">
+        &#9776;
+    </div>
     <div class="header">
-        <a href="/index.html" class="header-link">Home</a>
-        <a href="/projects.html" class="header-link">Projects</a>
-        <a href="/social.html" class="header-link">Social</a>
-        <a href="/credits.html" class="header-link">Credits</a>
+        <a href="/index.html" class="header-btn">Home</a>
+        <a href="/projects.html" class="header-btn">Projects</a>
+        <a href="/social.html" class="header-btn">Social</a>
+        <a href="/credits.html" class="header-btn">Credits</a>
     </div>
 
-    <!-- Plugin Banner -->
-    <div class="plugin-hero">
-        <img src="/assets/sxp_plugin.png" alt="StowableXP Icon" class="plugin-icon">
-        <h1 class="plugin-title">StowableXP</h1>
-        <p class="plugin-bio">Withdraw and Store your XP in Bottles and Books with ease.</p>
-    </div>
+    <div class="content-container">
+        <div class="plugin-hero">
+            <div class="plugin-icon-wrap">
+                <img src="/assets/sxp_plugin.png" alt="StowableXP Icon" class="plugin-icon">
+            </div>
+            <h1 class="plugin-title">StowableXP</h1>
+            <p class="plugin-bio">Withdraw and Store your XP in Bottles and Books with ease.</p>
+        </div>
 
-    <!-- Plugin Info Section -->
     <div class="plugin-info">
         <h2>About</h2>
         <p class="pl-info">
-            StowableXP is a Minecraft server plugin that lets players store their XP safely inside bottles and books.
+            StowableXP is a Minecraft server plugin that lets players store their XP safely inside bottles and books with a vanilla feel. <br>
+            This plugin does its best to mimic the vanilla XP bottle, but instead you can store specific amounts of XP inside a bottle instead <br>
+            of a random amount! You can even store your XP inside a Book if you prefer! And also, when you "redeem" the XP from a bottle <br>
+            or book any item in the offhand or armor slots with mending will be mended accordingly as if you picked up the XP!
         </p>
 
         <h2>Commands</h2>
         <ul>
-            <li><code>/bottlexp</code> – Store XP into bottles.</li>
-            <li><code>/bookxp</code> – Store XP inside books.</li>
+            <li><code>/bxp</code> <span class="argument">&lt;amount&gt;</span> <span class="argument">&lt;levels | points&gt;</span> - Store XP into bottles.</li>
+            <li><code>/sxp</code> <span class="argument">&lt;help | info | reload&gt;</span> - Main plugin command. (Get plugin info and help)</li>
+            <li><code>/stowablexp</code> <span class="argument">&lt;help | info | reload&gt;</span> - Main plugin command. (Get plugin info and help)</li>
+            <li><code>/bottlexp</code> <span class="argument">&lt;amount&gt;</span> <span class="argument">&lt;levels | points&gt;</span> - Store XP into bottles.</li>
+            <li><code>/bookxp</code> <span class="argument">&lt;amount&gt;</span> <span class="argument">&lt;levels | points&gt;</span> - Store XP inside books.</li>
         </ul>
 
         <h2>Features</h2>
         <ul>
-            <li>Configurable XP rates</li>
-            <li>Lightweight and efficient</li>
-            <li>Easy to install</li>
+            <li>Configurable Stored XP Limits </li>
+            <li>Uses NBT data to store XP data within the Bottle or Book item itself</li>
+            <li>Easy to install, <a href="/projects/sxp1.4_config.yml.html" class="tooltip-link">configure<span class="tooltip-text">View config.yml</span></a> and use!</li>
         </ul>
 
         <h2>Download</h2>
-        <a href="/downloads/stowablexp.jar" class="download-btn">⬇ Download Latest</a>
+        <div style="position: relative; display: inline-block;">
+            <a href="/assets/jarfiles/StowableXP-1.4.jar" class="download-btn">Download Latest</a>
+            <a href="/assets/jarfiles/StowableXP-1.4.jar" class="downloadlink">StowableXP-1.4.JAR</a>
+        </div>
     </div>
 </div>
+</div>
+
 <!-- Cloudflare Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "70f5f6b0eb6b463a9bc77f43a5ddb4ae"}'></script>
+<script>
+    const menuIcon = document.querySelector('.mobile-menu-icon');
+    const header = document.querySelector('.header');
+
+    function toggleMenu() {
+      header.classList.toggle('active');
+      const expanded = menuIcon.getAttribute('aria-expanded') === 'true';
+      menuIcon.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    }
+
+    menuIcon.addEventListener('click', toggleMenu);
+    menuIcon.addEventListener('keypress', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+</script>
 </body>
 </html>

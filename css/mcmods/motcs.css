@@ -71,3 +71,47 @@ body {
 .header-link a:hover {
     text-decoration: underline;
 }
+
+/* Mobile Support OMG */
+.mobile-menu-icon {
+  display: none;
+  font-size: 40px;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  color: #FF004F;
+  z-index: 20;
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .header.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: -170px;
+    width: 40%;
+    background: #000012cc;
+    padding: 400px 130px;
+    gap: 10px;
+    z-index: 15;
+  }
+
+  .header.active .header-btn {
+    font-size: 18px;
+    padding: 0.8em 1.6em;
+    border-radius: 8px;
+    text-align: left;
+    left: -125px;
+    bottom: 155px;
+  }
+}
