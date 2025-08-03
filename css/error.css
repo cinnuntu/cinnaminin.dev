@@ -103,7 +103,8 @@ body {
 
 .text-content {
   text-align: center;
-  max-width: 800px;
+  max-width: 4200px;
+  white-space: nowrap;
   width: 100%;
 }
 
@@ -160,4 +161,61 @@ p {
   .image-container {
     max-width: 70%;
   }
+}
+
+/* Mobile Support OMG */
+.mobile-menu-icon {
+  display: none;
+  font-size: 40px;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  color: #FF004F;
+  z-index: 20;
+  user-select: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .header.active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: -170px;
+    width: 40%;
+    background: #000012cc;
+    padding: 400px 130px;
+    gap: 10px;
+    z-index: 15;
+  }
+
+  .header.active .header-btn {
+    font-size: 18px;
+    padding: 0.8em 1.6em;
+    border-radius: 8px;
+    text-align: left;
+    left: -125px;
+    bottom: 155px;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 5200px;
+  margin-top: 220px;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
