@@ -87,7 +87,7 @@ But most importantly: remember not to be afraid! As for Mal0 is very nice! She w
           clearTerminal();
           currentContext = "mal0_images";
           menuIndex = 0;
-          currentMenuItems = ["image1.png", "image2.png", "image3.png"];
+          currentMenuItems = ["mal0_01.png", "mal0_02.png", "mal0_03.png", "mal0_selfie_01.png", "mal0s.png", "mal0sindark_01.png", "two_mal0s.png", "two_mal0s_01"];
           appendOutput("mal0.db/Images:");
           menuContainer = null;
           menuActive = true;
@@ -299,3 +299,4 @@ Use "openfile <filename>" to open a file.`);
   }
 
 });
+
