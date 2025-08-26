@@ -182,8 +182,7 @@ Use "openfile <filename>" to open a file.`);
       - goto <url>: Navigate to any URL on the internet
       - filetree: Show site file structure
       - openfile <filename>: Open a known site file
-      - ls: Show site file structure
-      - back: Go back to previous menu (if inside mal0 menus)`);
+      - ls: Show site file structure`);
     } else if (cmd === 'netstat') {
       appendOutput(`Active Internet connections (w/o servers)
 You do not have permission to view this information. (Blocked)`);
@@ -298,4 +297,5 @@ Use "openfile <filename>" to open a file.`);
       appendOutput('Unknown command. Try "help".');
     }
   }
+
 });
