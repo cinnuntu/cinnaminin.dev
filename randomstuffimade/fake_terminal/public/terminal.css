@@ -37,3 +37,8 @@ body {
 input {
   color: var(--terminal-color);
 }
+
+.highlight {
+  color: yellow;
+  font-weight: bold;
+}
